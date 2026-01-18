@@ -1,0 +1,19 @@
+services:
+  jellyfin-suggested:
+    build: .
+    image: jellyfin-suggested:latest
+    container_name: jellyfin-suggested
+    restart: "no"
+    environment:
+      - JELLYFIN_URL=${JELLYFIN_URL}
+      - JELLYFIN_API_KEY=${JELLYFIN_API_KEY}
+      - TMDB_API_KEY=${TMDB_API_KEY}
+      - PLAYLIST_NAME=${PLAYLIST_NAME:-Suggested For You}
+      - MAX_WATCHED_ITEMS=${MAX_WATCHED_ITEMS:-20}
+      - MAX_SIMILAR_PER_ITEM=${MAX_SIMILAR_PER_ITEM:-5}
+      - MAX_PLAYLIST_ITEMS=${MAX_PLAYLIST_ITEMS:-50}
+      - MIN_TMDB_RATING=${MIN_TMDB_RATING:-6.0}
+      - MIN_TMDB_VOTES=${MIN_TMDB_VOTES:-50}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    # For one-time runs, or use with cron on the host
+    # To run: docker compose run --rm jellyfin-suggested
