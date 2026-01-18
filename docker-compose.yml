@@ -4,6 +4,7 @@ services:
     image: jellyfin-suggested:latest
     container_name: jellyfin-suggested
     restart: "no"
+    network_mode: host  # Use host networking to access local Jellyfin
     environment:
       - JELLYFIN_URL=${JELLYFIN_URL}
       - JELLYFIN_API_KEY=${JELLYFIN_API_KEY}
